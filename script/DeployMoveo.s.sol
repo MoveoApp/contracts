@@ -9,7 +9,9 @@ contract DeployMoveoScript is Script {
     bytes32 salt = keccak256(abi.encodePacked(vm.envString("SALT")));
     address owner = vm.envAddress("OWNER");
     uint256 ownerPrivateKey = vm.envUint("OWNER_PRIVATE_KEY");
+    address server = vm.envAddress("SERVER");
     address create3Factory = vm.envAddress("CREATE3_FACTORY");
+    address token = vm.envAddress("TOKEN");
 
     Moveo public moveo;
 
@@ -28,7 +30,7 @@ contract DeployMoveoScript is Script {
 
         console2.log("Deploying Moveo...");
         address moveoAddr =
-            factory.deploy(salt, abi.encodePacked(type(Moveo).creationCode, abi.encode(owner)));
+            factory.deploy(salt, abi.encodePacked(type(Moveo).creationCode, abi.encode(owner, server, token)));
         console2.log("Moveo deployed: ", moveoAddr);
 
         vm.stopBroadcast();
