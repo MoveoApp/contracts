@@ -15,7 +15,8 @@ test = "test"
 remappings = [
     'ds-test/=lib/ds-test/src/',
     'forge-std/=lib/forge-std/src/',
-    '@openzeppelin/=lib/openzeppelin-contracts/'
+    '@openzeppelin/=lib/openzeppelin-contracts/',
+    'create3-factory/=lib/create3-factory/'
 ]
 
 [profile.ci]
